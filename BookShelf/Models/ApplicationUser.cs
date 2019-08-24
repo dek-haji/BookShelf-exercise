@@ -1,4 +1,4 @@
-﻿using Google.GData.Extensions;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BookShelf.Models
 {
-    public class ApplicationUser
+    public class ApplicationUser : IdentityUser
     {
+      
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -17,8 +18,10 @@ namespace BookShelf.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required]
-        [Display(FullName = "FullName")]
+        [Display(Name = "FullName")]
         public string FullName => $"{FirstName} {LastName}";
+
+        public virtual ICollection<Books> Books { get; set; }
 
     }
 }

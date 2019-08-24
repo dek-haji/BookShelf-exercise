@@ -8,6 +8,7 @@ namespace BookShelf.Models
 {
     public class Author
     {
+        public int Id { get; set; }
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -15,6 +16,9 @@ namespace BookShelf.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+        [Display(Name = "Last Name")]
         public string PrefferedGenre { get; set; }
+        public virtual ICollection<Books> Books { get; set; }
+        public int ApplicationUserId { get; set; }
     }
 }
